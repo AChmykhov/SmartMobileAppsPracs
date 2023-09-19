@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">control_lesson1</string>
+    <string name="name">Name:</string>
+    <string name="enter_name">Enter the name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="enter_phone_number">Enter your phone number</string>
+    <string name="organisation">Organisation</string>
+    <string name="enter_organisation">Enter your organisation</string>
+    <string name="save_btn">Save</string>
+</resources>

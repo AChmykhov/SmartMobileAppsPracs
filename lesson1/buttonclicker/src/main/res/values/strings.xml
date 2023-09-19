@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ButtonClicker</string>
+    <string name="myNumText">Мой номер по списку № 33</string>
+    <string name="itIsNotMeText">Это не я сделал</string>
+    <string name="who_am_i_btn">WHO AM I</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="it_s_not_me_btn">IT\'S NOT ME</string>
+</resources>
