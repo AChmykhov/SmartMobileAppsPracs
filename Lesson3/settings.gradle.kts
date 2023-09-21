@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Lesson3"
 include(":IntentApp")
- 
+include(":favoritebook")
