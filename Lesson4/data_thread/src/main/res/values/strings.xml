@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Data Thread</string>
+    <string name="runonuithread_explanation">runOnUiThread выполняет код в потоке интерфейса пользователя, View.post прикрепляет код в очередь на выполнение, код будет выполнен в потоке интерфейса пользователя, View.postDelayed делает то же, что и View.post, но добавляет задержку перед началом выполнения кода.</string>
+</resources>
