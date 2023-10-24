@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Service App</string>
+    <string name="current_time">1:27</string>
+    <string name="total_time">4:12</string>
+    <string name="current_song">Current Song</string>
+    <string name="artist_name">Artist name</string>
+    <string name="now_playing">NOW PLAYING</string>
+</resources>
