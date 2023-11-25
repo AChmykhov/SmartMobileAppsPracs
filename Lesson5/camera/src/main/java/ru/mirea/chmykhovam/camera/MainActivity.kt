@@ -23,8 +23,8 @@ import java.util.Date
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
-    val REQUEST_CODE_PERMISSION = 200
-    var isWork = false
+    private val REQUEST_CODE_PERMISSION = 200
+    private var isWork = false
     private lateinit var binding: ActivityMainBinding
     private lateinit var imageUri: Uri
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onActivityResult(result: ActivityResult?) {
                     if (result == null) return
                     if (result.resultCode == Activity.RESULT_OK) {
-                        val data: Intent? = result.data
+//                        val data: Intent? = result.data
                         binding.imageView.setImageURI(imageUri)
                     }
                 }

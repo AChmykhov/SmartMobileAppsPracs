@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "ru.mirea.chmykhovam.accelerometer"
+    namespace = "ru.mirea.chmykhovam.audiorecord"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "ru.mirea.chmykhovam.accelerometer"
+        applicationId = "ru.mirea.chmykhovam.audiorecord"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -21,8 +21,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -32,6 +31,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    buildFeatures {
+        viewBinding = true
     }
 }
 
