@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Notebook</string>
+    <string name="filename_field_hint">filename.txt</string>
+    <string name="quote_field_hint">Quote</string>
+    <string name="save">Save</string>
+    <string name="load_file">Load File</string>
+</resources>
