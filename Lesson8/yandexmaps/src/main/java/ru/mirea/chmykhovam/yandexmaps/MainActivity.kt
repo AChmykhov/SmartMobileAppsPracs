@@ -9,9 +9,11 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
+import androidx.core.graphics.drawable.toBitmap
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
@@ -49,7 +51,7 @@ class MainActivity : AppCompatActivity(), UserLocationObjectListener {
             ), Animation(Animation.Type.SMOOTH, 0f), null
         )
         checkAndRequestPermissions()
-        if (havePermissions){
+        if (havePermissions) {
             loadUserLocationLayer()
         }
     }
@@ -75,9 +77,10 @@ class MainActivity : AppCompatActivity(), UserLocationObjectListener {
         val finePermission = ContextCompat.checkSelfPermission(
             this, Manifest.permission.ACCESS_FINE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED
-        val backgroundPermission = Build.VERSION.SDK_INT < 29 || (Build.VERSION.SDK_INT > 28 && ContextCompat.checkSelfPermission(
-            this, Manifest.permission.ACCESS_BACKGROUND_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED)
+        val backgroundPermission =
+            Build.VERSION.SDK_INT < 29 || (Build.VERSION.SDK_INT > 28 && ContextCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_BACKGROUND_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED)
         if (!coarsePermission) {
             ActivityCompat.requestPermissions(
                 this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), REQUEST_CODE_PERMISSION
@@ -107,15 +110,13 @@ class MainActivity : AppCompatActivity(), UserLocationObjectListener {
             havePermissions =
                 permissions.contains(Manifest.permission.ACCESS_COARSE_LOCATION) && grantResults[permissions.indexOf(
                     Manifest.permission.ACCESS_COARSE_LOCATION
-                )] == PackageManager.PERMISSION_GRANTED &&
-                        permissions.contains(Manifest.permission.ACCESS_FINE_LOCATION) && grantResults[permissions.indexOf(
+                )] == PackageManager.PERMISSION_GRANTED && permissions.contains(Manifest.permission.ACCESS_FINE_LOCATION) && grantResults[permissions.indexOf(
                     Manifest.permission.ACCESS_FINE_LOCATION
-                )] == PackageManager.PERMISSION_GRANTED &&
-                        (Build.VERSION.SDK_INT < 29 || (Build.VERSION.SDK_INT > 28 && permissions.contains(
-                            Manifest.permission.ACCESS_BACKGROUND_LOCATION
-                        ) && grantResults[permissions.indexOf(
-                            Manifest.permission.ACCESS_BACKGROUND_LOCATION
-                        )] == PackageManager.PERMISSION_GRANTED))
+                )] == PackageManager.PERMISSION_GRANTED && (Build.VERSION.SDK_INT < 29 || (Build.VERSION.SDK_INT > 28 && permissions.contains(
+                    Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                ) && grantResults[permissions.indexOf(
+                    Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                )] == PackageManager.PERMISSION_GRANTED))
         }
         if (havePermissions) {
             loadUserLocationLayer()
@@ -139,19 +140,24 @@ class MainActivity : AppCompatActivity(), UserLocationObjectListener {
         )
 // При определении направления движения устанавливается следующая иконка
         userLocationView.arrow.setIcon(
-            ImageProvider.fromResource(
-                this, R.drawable.arrow_up_float
+            ImageProvider.fromBitmap(
+                AppCompatResources.getDrawable(
+                    this, R.drawable.arrow_up_float
+                )!!.toBitmap(96, 96)
             )
         )
 // При получении координат местоположения устанавливается следующая иконка
         val pinIcon: CompositeIcon = userLocationView.pin.useCompositeIcon()
         pinIcon.setIcon(
             "pin",
-            ImageProvider.fromResource(this, R.drawable.search_result),
-            IconStyle().setAnchor(PointF(0.5f, 0.5f))
-                .setRotationType(RotationType.ROTATE)
-                .setZIndex(1f)
-                .setScale(0.5f)
+//            ImageProvider.fromResource(this, R.drawable.search_result),
+            ImageProvider.fromBitmap(
+                AppCompatResources.getDrawable(
+                    this, R.drawable.search_result
+                )!!.toBitmap(96, 96)
+            ),
+            IconStyle().setAnchor(PointF(0.5f, 0.5f)).setRotationType(RotationType.ROTATE)
+                .setZIndex(1f).setScale(1f)
         )
         userLocationView.accuracyCircle.fillColor = ColorUtils.setAlphaComponent(Color.BLUE, 153)
     }
